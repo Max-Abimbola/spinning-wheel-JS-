@@ -1,7 +1,9 @@
+import React, {Component} from 'react';
 
-class Segment extends React.component{
+class Segment extends Component{
     render(){
-        return <div>Max</div>
+        return <h1>Hello</h1>
     }
 }
 
+export default Segment;
