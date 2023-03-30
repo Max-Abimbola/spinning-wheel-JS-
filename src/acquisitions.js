@@ -1,4 +1,7 @@
 import Chart from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+Chart.register(ChartDataLabels);
 
 (async function() {
     const data = {
@@ -18,6 +21,7 @@ import Chart from 'chart.js/auto';
       {
         type: 'pie',
         data: data,
+        plugins: [ChartDataLabels]
       }
     );
   })();

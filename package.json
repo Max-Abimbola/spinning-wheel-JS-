@@ -3,14 +3,17 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-      "dev": "parcel src/index.html",
-      "build": "parcel build src/index.html"
+        "dev": "parcel src/index.html",
+        "build": "parcel build src/index.html"
     },
     "devDependencies": {
-      "parcel": "^2.6.2"
+        "cssnano": "^5.1.15",
+        "parcel": "^2.6.2",
+        "postcss": "^8.4.21"
     },
     "dependencies": {
-      "@cubejs-client/core": "^0.31.0",
-      "chart.js": "^4.0.0"
+        "@cubejs-client/core": "^0.31.0",
+        "chart.js": "^4.2.1",
+        "chartjs-plugin-datalabels": "^2.2.0"
     }
-  }
+}
