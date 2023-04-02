@@ -21,25 +21,27 @@ function showWinner(winner){
 function rotateCircle(){
   choice = Math.floor( Math.random() * (spinnerArray.length - 0) + 0)
 
-  console.log(choice)
-  console.log(chartInstance.data.labels)
-
   segSize = 360/spinnerArray.length
-  rotation = 720 + (choice * segSize) + (segSize/2)
+  segRotation = Math.floor(Math.random() * ((segSize-1) - 1) + 1)
+  
+  rotation = 1440 + (choice * segSize) + (segSize/segRotation)
+  
+  console.log(segSize/segRotation)
 
   anime({
     targets: '#acquisitions',
     rotate: [0,-rotation],
-    duration: 3000,
+    duration: 5000,
     easing: 'cubicBezier(.37,0,.63,1)',
     complete: function(anime) {
       var spinnerChoice = chartInstance.data.labels[choice]
       chartInstance.update()
-      showWinner(chartInstance.data.labels[choice])
+      var resultDisplay = document.getElementById('result-display')
+      resultDisplay.innerHTML = `${chartInstance.data.labels[choice]}`
     }
   }); 
 
-  
+
 }
 
 function generateFauxData(length){
@@ -80,21 +82,13 @@ function clearChart(){
   chartInstance.update()
 
 }
-/*
-let animation = anime({
-  targets: '#acquisitions',
-  rotate: [0,360],
-  duration: 3000,
-  easing: 'easeInOutSine'
-}); 
-*/
-
 
    
 const data = {
   labels: ['a','b','c','d'],
   datasets: [{
-    data: [1,1,1,1]
+    data: [1,1,1,1],
+
   }]
 }
 
@@ -106,6 +100,10 @@ const chartInstance = new Chart(
     options: {
     plugins:{
       datalabels: {
+        color:'black',
+        font: {
+          weight: 'bold'
+        },
         formatter: ((context,args) => {
           const index = args.dataIndex;
           return args.chart.data.labels[index];
@@ -137,6 +135,8 @@ clearButton.addEventListener('click',clearChart)
 
 var spinButton = document.getElementById('spinButton')
 spinButton.addEventListener('click',rotateCircle)
+
+
 
 var x = ['Apples','Oranges','Bananas']
 for(var i = 0; i < x.length; i++){

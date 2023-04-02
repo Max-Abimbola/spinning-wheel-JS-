@@ -564,7 +564,6 @@ var _chartjsPluginDatalabels = require("chartjs-plugin-datalabels");
 var _chartjsPluginDatalabelsDefault = parcelHelpers.interopDefault(_chartjsPluginDatalabels);
 var _animeEsJs = require("animejs/lib/anime.es.js");
 var _animeEsJsDefault = parcelHelpers.interopDefault(_animeEsJs);
-const anime = require("fa24b2235ceedab5");
 var spinnerArray = [];
 (0, _autoDefault.default).register((0, _chartjsPluginDatalabelsDefault.default));
 function getFormData() {
@@ -573,26 +572,29 @@ function getFormData() {
     return textBoxValue;
 }
 function showWinner(winner) {
-    console.log(`The spinner chose ${winner}`);
+    alert(`The spinner chose ${winner}`);
 }
 function rotateCircle() {
     choice = Math.floor(Math.random() * (spinnerArray.length - 0) + 0);
-    console.log(choice);
-    console.log(chartInstance.data.labels);
     segSize = 360 / spinnerArray.length;
-    rotation = 720 + choice * segSize + segSize / 2;
-    let animation = (0, _animeEsJsDefault.default)({
+    segRotation = Math.floor(Math.random() * (segSize - 1 - 1) + 1);
+    rotation = 1440 + choice * segSize + segSize / segRotation;
+    console.log(segSize / segRotation);
+    (0, _animeEsJsDefault.default)({
         targets: "#acquisitions",
         rotate: [
             0,
             -rotation
         ],
-        duration: 2000,
-        easing: "easeInOutSine"
+        duration: 5000,
+        easing: "cubicBezier(.37,0,.63,1)",
+        complete: function(anime) {
+            var spinnerChoice = chartInstance.data.labels[choice];
+            chartInstance.update();
+            var resultDisplay = document.getElementById("result-display");
+            resultDisplay.innerHTML = `${chartInstance.data.labels[choice]}`;
+        }
     });
-    var spinnerChoice = chartInstance.data.labels[choice];
-    chartInstance.update();
-    showWinner(chartInstance.data.labels[choice]);
 }
 function generateFauxData(length) {
     var data = [];
@@ -601,10 +603,18 @@ function generateFauxData(length) {
 }
 function createNewChart() {
     var formData = getFormData();
-    formData = formData.replaceAll(",", "");
     console.log(formData);
-    for(var i = 0; i < formData.length; i++)spinnerArray.push(formData[i]);
-    console.log(spinnerArray);
+    var newVal = "";
+    for(var i = 0; i < formData.length; i++){
+        if (formData[i] == ",") {
+            console.log(newVal);
+            spinnerArray.push(newVal);
+            newVal = "";
+            continue;
+        }
+        newVal += formData[i];
+    }
+    spinnerArray.push(newVal);
     updateChart(spinnerArray);
 }
 function clearChart() {
@@ -613,14 +623,7 @@ function clearChart() {
     chartInstance.data.datasets[0].data = [];
     chartInstance.update();
 }
-/*
-let animation = anime({
-  targets: '#acquisitions',
-  rotate: [0,360],
-  duration: 3000,
-  easing: 'easeInOutSine'
-}); 
-*/ const data = {
+const data = {
     labels: [
         "a",
         "b",
@@ -644,6 +647,10 @@ const chartInstance = new (0, _autoDefault.default)(document.getElementById("acq
     options: {
         plugins: {
             datalabels: {
+                color: "black",
+                font: {
+                    weight: "bold"
+                },
                 formatter: (context, args)=>{
                     const index = args.dataIndex;
                     return args.chart.data.labels[index];
@@ -671,14 +678,14 @@ clearButton.addEventListener("click", clearChart);
 var spinButton = document.getElementById("spinButton");
 spinButton.addEventListener("click", rotateCircle);
 var x = [
-    "Max",
-    "Mumsy",
-    "Pops"
+    "Apples",
+    "Oranges",
+    "Bananas"
 ];
 for(var i = 0; i < x.length; i++)spinnerArray.push(x[i]);
 updateChart(x);
 
-},{"chart.js/auto":"d8NN9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","chartjs-plugin-datalabels":"2HIEm","animejs/lib/anime.es.js":"jokr5","fa24b2235ceedab5":"jokr5"}],"d8NN9":[function(require,module,exports) {
+},{"chart.js/auto":"d8NN9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","chartjs-plugin-datalabels":"2HIEm","animejs/lib/anime.es.js":"jokr5"}],"d8NN9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _chartJs = require("../dist/chart.js");

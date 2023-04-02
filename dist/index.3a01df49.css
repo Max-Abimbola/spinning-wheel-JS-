@@ -1,31 +1,64 @@
+body {
+  background: #f08080;
+  font-family: Verdana, sans-serif;
+}
+
 #ticker-image {
   width: 50px;
-  fill: gold;
-  background-color: gold;
+  -webkit-filter: invert(0%) sepia(11%) saturate(432%) hue-rotate(315deg) brightness(85%) contrast(89%);
+  filter: invert(0%) sepia(11%) saturate(432%) hue-rotate(315deg) brightness(85%) contrast(89%);
   position: fixed;
-  bottom: 960px;
+  bottom: 870px;
   transform: scaleY(-1);
 }
 
 #acquisitions {
   position: fixed;
+  top: 100px;
 }
 
 div, .ticker-wrapper {
   justify-content: center;
   display: flex;
+  top: 50px;
 }
 
 #button-textarea-wrapper {
+  -webkit-box-pack: right;
+  -ms-flex-pack: right;
+  height: 100%;
+  justify-content: right;
+  display: inline-block;
+}
+
+#button-wrapper {
   -webkit-box-pack: right;
   -ms-flex-pack: right;
   justify-content: right;
   display: flex;
 }
 
-#button-wrapper {
-  display: block;
-  right: 100px;
+button {
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  height: 50px;
+  background-color: #a95d5d;
+  border: none;
+  margin: 4px 2px;
+  padding: 15px 32px;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#result-display {
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  background-color: #a95d5d;
+  align-items: center;
+  display: flex;
 }
 
 /*# sourceMappingURL=index.3a01df49.css.map */

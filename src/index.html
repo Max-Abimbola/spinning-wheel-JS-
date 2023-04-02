@@ -5,9 +5,21 @@
   </head>
   <body>
     <link rel="stylesheet" href="/style.css">
-    <div class="'ticker-wrapper">
-      <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
-      <img src="/triangle-svgrepo-com.svg" id="ticker-image" alt="">
+    <div id="big-wrapper">
+      <div class="'ticker-wrapper">
+        <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
+        <img src="/triangle-svgrepo-com.svg" id="ticker-image" alt="">
+      </div>
+      <div id="button-textarea-wrapper">
+        <div id="result-display">...</div>
+        <textarea name="userData" id="userData" cols="40" rows="25" style="background-color:#ffffff; font-size:30px;"></textarea>
+        <div id="button-wrapper">    
+          <button id="submitButton">Submit</button>
+          <button id="clearButton">Clear</button>
+          <button id="spinButton">Spin</button>
+        </div>
+      </div>
+      
     </div>
     <script type="module" src="acquisitions.js"></script>
 
@@ -15,14 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
     
-    <div id="button-textarea-wrapper">
-      <textarea name="userData" id="userData" cols="30" rows="10"></textarea>
-      <div id="button-wrapper">    
-        <button id="submitButton">Submit</button>
-        <button id="clearButton">Clear</button>
-        <button id="spinButton">Spin</button>
-      </div>
-    </div>
+
   </body>
 </html>
  
