@@ -1,0 +1,17 @@
+#ticker-image {
+  position: fixed;
+  transform: scaleY(-1);
+}
+
+#acquisitions {
+  position: fixed;
+}
+
+#ticker-wrapper {
+  width: 400px;
+  height: 400px;
+  place-items: center;
+  display: grid;
+}
+
+/*# sourceMappingURL=index.8353e49f.css.map */

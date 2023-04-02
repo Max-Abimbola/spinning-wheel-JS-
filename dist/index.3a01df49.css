@@ -1,0 +1,31 @@
+#ticker-image {
+  width: 50px;
+  fill: gold;
+  background-color: gold;
+  position: fixed;
+  bottom: 960px;
+  transform: scaleY(-1);
+}
+
+#acquisitions {
+  position: fixed;
+}
+
+div, .ticker-wrapper {
+  justify-content: center;
+  display: flex;
+}
+
+#button-textarea-wrapper {
+  -webkit-box-pack: right;
+  -ms-flex-pack: right;
+  justify-content: right;
+  display: flex;
+}
+
+#button-wrapper {
+  display: block;
+  right: 100px;
+}
+
+/*# sourceMappingURL=index.3a01df49.css.map */
